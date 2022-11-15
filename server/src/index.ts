@@ -9,7 +9,7 @@ import bodyParser from "body-parser";
 config();
 
 const app = express();
-const PORT = process.env.PORT || 8000;
+const PORT: number =  parseInt(process.env.PORT || "8000");
 
 app.use(bodyParser.json());
 
