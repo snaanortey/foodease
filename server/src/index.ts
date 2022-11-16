@@ -8,6 +8,7 @@ import bodyParser from "body-parser";
 config({ debug: true });
 
 import getIngredientsById from "../src/routes/getIngredientsById";
+import imageSearch from "../src/routes/imageSearch";
 
 const app = express();
 const PORT: number = parseInt(process.env.PORT || "8000");
@@ -19,6 +20,7 @@ app.use(cors());
 app.use(fileUpload({ createParentPath: true }));
 
 app.use("/ingredients", getIngredientsById);
+app.use("/", imageSearch);
 app.listen(PORT, () => {
   console.log(`listening on port ${PORT}`);
 });
