@@ -13,9 +13,9 @@ interface PartialMatchQueriesInnerValue {
 
 
 /**
- * Transforms keywords to search for matching recipe using ingredient properties
- * @param keywordsToSearch
- * @returns
+ * The functions takes an array of ingredients and return an array of objects with a format to be queried in elastic search
+ * @param keywordsToSearch an array of ingredients
+ * @returns an array of objects
  */
 function buildPartialQueriesFromKeywords(
   keywordsToSearch: string[]
@@ -26,6 +26,10 @@ function buildPartialQueriesFromKeywords(
   return partialMatchQueries;
 }
 
+/**
+ * Returns a promise
+ * @returns the image propery of the API response
+ */
 async function getRandomImage(): Promise<string> {
   const { data } = await axios.get("https://foodish-api.herokuapp.com/api/");
   return data.image;

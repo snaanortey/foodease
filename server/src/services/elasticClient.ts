@@ -12,10 +12,9 @@ if (
 
 export const elasticClient = new Client({
   cloud: {
-    id: process.env.ELASTIC_CLOUD_ID,
+    id: process.env.ELASTIC_CLOUD_ID!,
   },
   auth: {
-    apiKey: process.env.ELASTIC_CLOUD_API_KEY,
+    apiKey: process.env.ELASTIC_CLOUD_API_KEY!,
   },
 });
-
