@@ -5,10 +5,12 @@ import "express-async-errors";
 import { config } from "dotenv";
 import bodyParser from "body-parser";
 
-config({ debug: true });
+config();
 
 import getIngredientsById from "../src/routes/getIngredientsById";
 import imageSearch from "../src/routes/imageSearch";
+import ingredientsToRecipes from "../src/routes/ingredientsToRecipes";
+import searchAndSuggestMeals from "../src/routes/searchAndSuggestMeals";
 
 const app = express();
 const PORT: number = parseInt(process.env.PORT || "8000");
@@ -20,7 +22,9 @@ app.use(cors());
 app.use(fileUpload({ createParentPath: true }));
 
 app.use("/ingredients", getIngredientsById);
-app.use("/", imageSearch);
+app.use("/upload-image", imageSearch);
+app.use("/recipes/search", ingredientsToRecipes);
+app.use("/meals/search", searchAndSuggestMeals);
 app.listen(PORT, () => {
   console.log(`listening on port ${PORT}`);
 });

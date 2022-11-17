@@ -9,6 +9,7 @@
       "request": "launch",
       "name": "Run backend",
       "runtimeExecutable": "yarn",
+      "cwd": "${workspaceFolder}/server",
       "runtimeArgs": ["start"],
       "skipFiles": ["<node_internals>/**"]
     }

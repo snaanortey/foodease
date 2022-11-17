@@ -47,6 +47,6 @@ const routeHandler: RequestHandler = async (req, res) => {
   }
 };
 
-router.post("./upload-image", routeHandler);
+router.post("/", routeHandler);
 
 export default router;
