@@ -10,8 +10,6 @@ interface PartialMatchQueriesInnerValue {
   ingredients: string;
 }
 
-
-
 /**
  * The functions takes an array of ingredients and return an array of objects with a format to be queried in elastic search
  * @param keywordsToSearch an array of ingredients

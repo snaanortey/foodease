@@ -15,7 +15,7 @@ const routeHandler: RequestHandler = async (req, res) => {
 
     res.json(result._source);
   } catch (err) {
-    console.log("Error getting ingredients by mealId", err);
+    console.log("Error getting ingredients by id", err);
     // if err is an object of the class ResponseError
     if (err instanceof errors.ResponseError) {
       res

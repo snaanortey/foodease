@@ -19,11 +19,12 @@ const routeHandler: RequestHandler = async (req, res) => {
       return;
     }
 
-    const image = req.files.image as fileUpload.UploadedFile;
+    const { image } = req.files;
+    const { data } = image as fileUpload.UploadedFile;
 
     // The image buffer is stored in the data property of the image
     // Call the google API passing to it the image buffer (image.data)
-    const [result] = await client.objectLocalization!(image.data);
+    const [result] = await client.objectLocalization!(data);
     const annotations = result.localizedObjectAnnotations;
 
     if (annotations === null || annotations === undefined) {
