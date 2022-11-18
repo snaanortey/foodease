@@ -1,15 +1,12 @@
-import fs from "fs";
 import { elasticClient } from "../services/elasticClient";
 import { RecipeInJSONFile } from "../types";
-
-const fileContent = fs.readFileSync("./scripts/ingredients.json", {
-  encoding: "utf-8",
-});
-const recipes = JSON.parse(fileContent) as RecipesDataInJSONFile;
+import untypedRecipes from "./ingredients.json";
 
 interface RecipesDataInJSONFile {
   [k: string]: RecipeInJSONFile;
 }
+
+const recipes = untypedRecipes as RecipesDataInJSONFile;
 
 const populateIndexWithRecipes = async (): Promise<void> => {
   for (const property in recipes) {
