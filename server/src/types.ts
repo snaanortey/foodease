@@ -2,7 +2,7 @@ export interface Recipe {
   id: string;
   imageUrl: string;
   ingredients?: string[];
-  picture_link?: string;
+  picture_link?: string | null;
   instructions?: string;
   title?: string;
 }
@@ -16,7 +16,7 @@ export interface ElasticSearchIndexRecipe {
 
 export interface RecipeInJSONFile {
   ingredients: string[];
-  picture_link: string;
+  picture_link: string | null;
   instructions: string;
   title: string;
 }

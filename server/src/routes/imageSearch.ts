@@ -1,5 +1,4 @@
 import express from "express";
-import { searchIngredientsByKeyWords } from "../services/search";
 // Imports the Google Cloud client library
 import { ImageAnnotatorClient } from "@google-cloud/vision";
 import { RequestHandler } from "express-serve-static-core";
@@ -40,8 +39,8 @@ const routeHandler: RequestHandler = async (req, res) => {
       return false;
     });
     const namesArray = annotationsWithNameProperty.map((item) => item.name!);
-    const response = await searchIngredientsByKeyWords(namesArray);
-    res.send(response);
+    // const response = await searchIngredientsByKeyWords(namesArray);
+    res.send(namesArray);
   } catch (err) {
     console.log(err);
     res.status(500).send(err);

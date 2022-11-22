@@ -1,3 +1,5 @@
+import {config} from "dotenv";
+config();
 import { elasticClient } from "../services/elasticClient";
 import { RecipeInJSONFile } from "../types";
 import untypedRecipes from "./ingredients.json";
@@ -13,12 +15,13 @@ const populateIndexWithRecipes = async (): Promise<void> => {
     try {
       const recipe = recipes[property];
 
+
       //Post each of the recipe objects (recipe) from the json file to the elasticsearch database
-      await elasticClient.index({
+      const result = await elasticClient.index({
         index: "recipes",
         document: recipe,
       });
-      console.log("one doc has finished uploading");
+      console.log(`Uploaded doc with id: ${result._id}`);
     } catch (error) {
       console.log(error);
       throw new Error(`Failed to upload recipe to the index`);

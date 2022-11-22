@@ -18,7 +18,7 @@ app.use(cors());
 app.use(fileUpload({ createParentPath: true }));
 
 app.use("/ingredients", getIngredientsById);
-app.use("/upload-image", imageSearch);
+app.use("/image/ingredients", imageSearch);
 app.use("/recipes/search", ingredientsToRecipes);
 app.use("/meals/search", searchAndSuggestMeals);
 app.listen(PORT, () => {
