@@ -1,0 +1,11 @@
+.homepage {
+  background: url("../../assets/images/Foodeaselogo-desktop.gif") no-repeat
+    center center fixed;
+  background-size: cover;
+  height: 100vh;
+
+  &__button-container {
+    max-width: 102rem;
+    margin: auto;
+  }
+}
