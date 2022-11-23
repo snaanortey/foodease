@@ -1,7 +1,7 @@
-import React from "react";
 import veggies from "../../assets/icons/veggies_icon.png";
 import clock from "../../assets/icons/clock.png";
 import { Recipes } from "../../types";
+import "./RecipesSummary.scss";
 
 interface RecipeSummaryProps {
   recipe: Recipes;

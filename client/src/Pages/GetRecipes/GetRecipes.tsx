@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import upload from "../../assets/images/upload.png";
 import RecipesSummary from '../../Components/RecipesSummary/RecipesSummary';
 import { Recipes } from '../../types';
+import "./GetRecipes.scss";
 
 export default function GetRecipes() {
   const [ingredientList, setIngredientList] = useState<string[]>([]);
