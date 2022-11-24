@@ -1,0 +1,39 @@
+@use "../../styles/_partials/breakpoints" as *;
+@use "../../styles/_partials/fonts" as *;
+@use "../../styles/_partials/mixins" as *;
+@use "../../styles/_partials/resets" as *;
+@use "../../styles/_partials/variables" as *;
+
+.searchIngredients{
+    margin: 0;
+    padding: 0;
+    background: url("../../assets/images/backgroundimage4.jpeg") no-repeat center center fixed;
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    &__heading {
+        padding-bottom: 2rem;
+        font-size: 5rem;
+        line-height: 3.8rem;
+        font-weight: 600;
+        color: rgba(206, 82, 15, 0.941);
+    }
+
+    &__text {
+        padding-bottom: 1rem;
+        font-size: 3rem;
+        line-height: 2.8rem;
+        font-weight: 400;
+        text-align: center;
+        color: rgb(87, 83, 83);
+    }
+
+    &__container {
+        padding-bottom: 7rem;
+    }
+    
+}

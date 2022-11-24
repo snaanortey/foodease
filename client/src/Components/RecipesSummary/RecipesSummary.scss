@@ -1,0 +1,101 @@
+@use "../../styles/_partials/breakpoints" as *;
+@use "../../styles/_partials/fonts" as *;
+@use "../../styles/_partials/mixins" as *;
+@use "../../styles/_partials/resets" as *;
+@use "../../styles/_partials/variables" as *;
+
+.recipeSummary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 2rem 0;
+  background-color: rgb(250, 235, 215);
+  overflow: auto;
+  border-radius: 18px;
+
+  &__image-image {
+    object-fit: cover;
+    width: 100%;
+  }
+
+  &__title {
+    padding-bottom: 0.6rem;
+    font-size: 1.6rem;
+    line-height: 2.2rem;
+    font-weight: 600;
+    padding-top: 1rem;
+    color: #060135;
+    text-align: left;
+  }
+
+  &__details-div {
+    display: flex;
+    padding-top: 1rem;
+    font-size: 1.8rem;
+    font-weight: 500;
+  }
+
+  &__details-image {
+    width: 2rem;
+    height: 2rem;
+    margin-right: 1rem;
+  }
+
+  &__instructions {
+    border: 1px solid rgb(203, 197, 197);
+    padding: 1rem;
+    color: black;
+    font-size: 1.4rem;
+  }
+
+  &__details {
+    display: flex;
+    justify-content: space-between;
+    color: black;
+  }
+}
+
+.recipeSummary__card {
+  height: 28rem;
+  width: 30rem;
+  position: relative;
+  -webkit-transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+  -o-transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+  transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+  
+  overflow: hidden;
+  -webkit-box-shadow: 15px 15px 27px #e1e1e3, -15px -15px 27px #ffffff;
+  box-shadow: 15px 15px 27px #e1e1e3, -15px -15px 27px #ffffff;
+}
+
+.recipeSummary__image {
+  height: 6em;
+  position: Absolute;
+  top: 0px;
+  -webkit-transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+  -o-transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+  transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.recipeSummary__description {
+  background-color: #fafafc;
+  height: 12rem;
+  width: 30rem;
+  position: absolute;
+  bottom: 0em;
+  -webkit-transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+  -o-transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+  transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+  padding: 0.5em 1em;
+  text-align: center;
+}
+
+.recipeSummary__card:hover .recipeSummary__description {
+  height: 0em;
+  padding: 0px 1em;
+}
+.recipeSummary__card:hover .recipeSummary__image {
+  height: 18em;
+}
