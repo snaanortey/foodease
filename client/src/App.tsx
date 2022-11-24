@@ -10,7 +10,7 @@ import { far } from "@fortawesome/free-regular-svg-icons";
 import GetShoppingList from "./Pages/GetShoppingList/GetShoppingList";
 import ShoppingList from "./Pages/ShoppingList/ShoppingList";
 
-// To migrate fontawesome icons
+// To import fontawesome icon librry
 library.add(far);
 
 function App() {
