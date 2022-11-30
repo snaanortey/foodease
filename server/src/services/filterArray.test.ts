@@ -1,6 +1,18 @@
 import { describe, expect, it } from "@jest/globals";
 
-import { filterArray, itemsToExclude } from "./filterArray";
+import { filterArray } from "./filterArray";
+
+const itemsToExcludeTest = [
+  "Container",
+  "Food",
+  "Vegetable",
+  "Tableware",
+  "Table",
+  "Spoon",
+  "Fork",
+  "Knife",
+  "Plate",
+];
 
 describe("All tests for filterArray file", () => {
   describe("filterArray", () => {
@@ -14,9 +26,8 @@ describe("All tests for filterArray file", () => {
     ];
     const expected = ["Tomato", "Pepper", "Cabbage", "Onion"];
     it("should not include items that are not food ingredients", () => {
-      const result = filterArray(array, itemsToExclude);
+      const result = filterArray(array, itemsToExcludeTest);
       expect(expected).toEqual(result);
     });
   });
-
 });
