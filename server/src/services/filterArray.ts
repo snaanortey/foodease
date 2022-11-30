@@ -1,4 +1,6 @@
-function filterArray(array: string[], values: string[]): string[] {
+export const itemsToExclude = ["Container", "Food", "Vegetable", "Tableware", "Table", "Spoon", "Fork", "Knife", "Plate"];
+
+export function filterArray(array: string[], values: string[]): string[] {
   const predicate = (element: string): boolean => {
     return !values.includes(element);
   };
@@ -6,4 +8,4 @@ function filterArray(array: string[], values: string[]): string[] {
   return newArray;
 }
 
-module.exports = { filterArray };
+

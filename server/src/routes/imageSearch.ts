@@ -3,6 +3,7 @@ import express from "express";
 import { ImageAnnotatorClient } from "@google-cloud/vision";
 import { RequestHandler } from "express-serve-static-core";
 import fileUpload from "express-fileupload";
+import { filterArray, itemsToExclude } from "../services/filterArray";
 
 //Creates a client from the Google client library
 const client = new ImageAnnotatorClient();
@@ -39,8 +40,10 @@ const routeHandler: RequestHandler = async (req, res) => {
       return false;
     });
     const namesArray = annotationsWithNameProperty.map((item) => item.name!);
-    // const response = await searchIngredientsByKeyWords(namesArray);
-    res.send(namesArray);
+
+    const filteredArray = filterArray(namesArray, itemsToExclude);
+
+    res.send(filteredArray);
   } catch (err) {
     console.log(err);
     res.status(500).send(err);
