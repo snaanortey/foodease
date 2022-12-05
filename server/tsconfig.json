@@ -9,7 +9,11 @@
     "outDir": "./dist",
     "noUnusedLocals": true,
     "sourceMap": true,
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    // https://stackoverflow.com/a/64993163/20016495
+    "strictPropertyInitialization": false 
   },
   "include": ["./src"],
   "exclude": ["node_modules", "dist"]
