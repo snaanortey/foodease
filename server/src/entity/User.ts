@@ -32,4 +32,10 @@ export class User {
 
   @Column("timestamp")
   lastModified: Date;
+
+  @Column({
+    type: "date",
+    nullable: true,
+  })
+  dateOfBirth: Date;
 }
