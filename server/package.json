@@ -8,7 +8,9 @@
     "start": "ts-node ./src/index.ts",
     "build": "tsc -P tsconfig.json",
     "migrate": "npx typeorm-ts-node-esm migration:generate -d ./src/dataSource.ts  ./src/migration/PostRefactoring",
-    "migration:apply": "npx typeorm-ts-node-esm migration:run -d ./src/dataSource.ts"
+    "migration:apply": "npx typeorm-ts-node-esm migration:run -d ./src/dataSource.ts",
+    "migration:create": "npx typeorm-ts-node-esm migration:create ./src/migration/PostRefactoring"
+    
   },
   "repository": {
     "type": "git",
