@@ -8,7 +8,7 @@ export class User {
   @Column({
     type: "varchar",
     length: 150,
-    unique: false,
+    unique: true,
   })
   email: string;
 
@@ -37,5 +37,5 @@ export class User {
     type: "date",
     nullable: true,
   })
-  dateOfBirth: Date;
+  dateOfBirth?: Date;
 }
