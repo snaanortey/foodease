@@ -1,8 +1,8 @@
 import express from "express";
 // Imports the Google Cloud client library
 import { ImageAnnotatorClient } from "@google-cloud/vision";
-import { RequestHandler } from "express-serve-static-core";
 import fileUpload from "express-fileupload";
+import { RequestHandler } from "express-serve-static-core";
 import { filterArray } from "../services/filterArray";
 
 //Creates a client from the Google client library

@@ -1,8 +1,10 @@
-import { hashPasswordAsync } from "../utils/promisify";
+import bcrypt from "bcrypt";
 import { AppDataSource } from "../dataSource";
 import { User } from "../entity/User";
+
 const saltRounds = 10;
 
+// This UserCreatePayload type is to match what a user will input as req.body of the http request
 interface UserCreatePayload {
   email: string;
   password: string;
@@ -12,14 +14,10 @@ interface UserCreatePayload {
 }
 
 export class UserService {
+  // This save method is the user data that should be saved in the db
   async save(userToInsert: UserCreatePayload): Promise<void> {
     // hash the password
-    // Note: The usual bcrpt.has function is an async function so the rest of
-    // the code continues to run while the password has not finished hashing
-    // creating the issue of sending the user a 201 message even if the user data
-    // in database has not been validated because the has must be created before the user
-    // details is saved in the db. E.g. in the instance of a duplicate email address
-    const hash = await hashPasswordAsync(userToInsert.password, saltRounds);
+    const hash = await bcrypt.hash(userToInsert.password, saltRounds);
 
     // set the timestamps
     const userDataToSave = {
@@ -38,5 +36,15 @@ export class UserService {
       .into(User)
       .values(userDataToSave)
       .execute();
+  }
+
+  // This method is to find a user in the db given the user's email
+  async findByEmail(userEmail: string): Promise<User> {
+    const user = await AppDataSource.getRepository(User)
+      .createQueryBuilder("user")
+      .where("user.email = :email", { email: userEmail })
+      .getOneOrFail();
+
+    return user;
   }
 }
