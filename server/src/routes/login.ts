@@ -60,9 +60,12 @@ router.post("/", async (req, res, next) => {
         return next(error);
       }
       req.login(user, { session: false }, async (error) => {
+        if (process.env.JWT_KEY === undefined) {
+          throw console.error("environment variables do not exist");
+        }
         if (error) return next(error);
         const body = { id: user.id, email: user.email };
-        const token = jwt.sign({ user: body }, "heyou");
+        const token = jwt.sign({ user: body }, process.env.JWT_KEY);
         return res.json({ token });
       });
     } catch (error) {
@@ -76,7 +79,7 @@ router.post("/", async (req, res, next) => {
 passport.use(
   new Strategy(
     {
-      secretOrKey: "heyou",
+      secretOrKey: process.env.JWT_KEY,
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
     },
     async (token: any, done: any): Promise<any> => {
