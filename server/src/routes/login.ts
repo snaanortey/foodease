@@ -13,6 +13,8 @@ const router = express.Router();
 
 const userService = new UserService();
 
+// This link proviides more details on workflow: https://www.digitalocean.com/community/tutorials/api-authentication-with-json-web-tokensjwt-and-passport
+
 // This verify function takes the user's email and password as reqs in the API endpoint and
 // confirms that username exists in db, and also that password matches user's hashed password
 const verify: VerifyFunction = function (email, password, callback) {
