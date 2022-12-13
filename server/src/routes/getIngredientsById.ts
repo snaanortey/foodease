@@ -1,5 +1,5 @@
-import express, { RequestHandler } from "express";
 import { errors } from "@elastic/elasticsearch";
+import express, { RequestHandler } from "express";
 import { elasticClient } from "../services/elasticClient";
 
 const router = express.Router();

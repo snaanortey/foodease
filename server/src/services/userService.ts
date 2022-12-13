@@ -1,6 +1,6 @@
+import bcrypt from "bcrypt";
 import { AppDataSource } from "../dataSource";
 import { User } from "../entity/User";
-import bcrypt from "bcrypt";
 
 const saltRounds = 10;
 

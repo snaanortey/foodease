@@ -1,13 +1,11 @@
-import { config } from "dotenv";
-config();
-import express from "express";
-import passport from "passport";
-import { Strategy as LocalStrategy, VerifyFunction } from "passport-local";
 import bcrypt from "bcrypt";
-import { UserService } from "../services/userService";
-import { EntityNotFoundError } from "typeorm";
+import express from "express";
 import jwt from "jsonwebtoken";
-import { Strategy, ExtractJwt } from "passport-jwt";
+import passport from "passport";
+import { ExtractJwt, Strategy } from "passport-jwt";
+import { Strategy as LocalStrategy, VerifyFunction } from "passport-local";
+import { EntityNotFoundError } from "typeorm";
+import { UserService } from "../services/userService";
 
 const router = express.Router();
 

@@ -1,16 +1,16 @@
-import express from "express";
-import cors from "cors";
-import fileUpload from "express-fileupload";
-import "express-async-errors";
 import bodyParser from "body-parser";
+import cors from "cors";
+import express from "express";
+import "express-async-errors";
+import fileUpload from "express-fileupload";
+import passport from "passport";
 import getIngredientsById from "../src/routes/getIngredientsById";
 import imageSearch from "../src/routes/imageSearch";
 import ingredientsToRecipes from "../src/routes/ingredientsToRecipes";
-import searchAndSuggestMeals from "../src/routes/searchAndSuggestMeals";
-import userRegistration from "../src/routes/userRegistration";
 import userLogin from "../src/routes/login";
+import searchAndSuggestMeals from "../src/routes/searchAndSuggestMeals";
 import secret from "../src/routes/secret";
-import passport from "passport";
+import userRegistration from "../src/routes/userRegistration";
 
 const app = express();
 

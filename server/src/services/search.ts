@@ -1,6 +1,6 @@
-import { elasticClient } from "./elasticClient";
 import axios from "axios";
-import {Recipe} from "../../src/types";
+import { Recipe } from "../../src/types";
+import { elasticClient } from "./elasticClient";
 
 interface PartialMatchQueries {
   match: PartialMatchQueriesInnerValue;
