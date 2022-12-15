@@ -6,3 +6,10 @@ export interface Recipes {
   instructions: string;
   title: string;
 }
+
+export interface UserProfile {
+  id: string;
+  email: string;
+  firstName: string;
+  lastName: string;
+}

@@ -9,13 +9,14 @@ import imageSearch from "../src/routes/imageSearch";
 import ingredientsToRecipes from "../src/routes/ingredientsToRecipes";
 import userLogin from "../src/routes/login";
 import searchAndSuggestMeals from "../src/routes/searchAndSuggestMeals";
-import secret from "../src/routes/secret";
 import userRegistration from "../src/routes/userRegistration";
+import secret from "./routes/profile";
 
 const app = express();
 
 app.use(bodyParser.json());
-app.use(cors());
+app.use(cors({credentials: true, origin: 'http://localhost:3000'}));
+app.options('*', cors()); //  cors to allow the client send a preflight request
 app.use(fileUpload({ createParentPath: true }));
 
 app.use("/ingredients", getIngredientsById);
@@ -26,6 +27,6 @@ app.use("/register", userRegistration);
 app.use("/login", userLogin);
 
 // Plug in the JWT strategy as a middleware so only verified users can access this route.
-app.use("/secret", passport.authenticate("jwt", { session: false }), secret);
+app.use("/profile", passport.authenticate("jwt", { session: false }), secret);
 
 export { app };
