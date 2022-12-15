@@ -31,6 +31,11 @@ class BackendService {
     return `${this.baseUrl}${route}`;
   };
 
+  /**
+   * Returns a boolean: true if the data has a token property; false if it doeesn't or if there's an error
+   * @param userCredentials an object with username and password proprties
+   * @returns a boolean
+   */
   public login = async (
     userCredentials: LoginCredentials
   ): Promise<boolean> => {
@@ -54,6 +59,10 @@ class BackendService {
     }
   };
 
+  /**
+   * Returns a user profile which is of type UserProfile as found in the types.ts file
+   * @returns user profile
+   */
   public getUserProfile = async (): Promise<UserProfile> => {
     try {
       const url = this.buildFullUrl("/profile");
