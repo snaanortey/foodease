@@ -60,7 +60,7 @@ class BackendService {
   };
 
   /**
-   * Returns a user profile which is of type UserProfile as found in the types.ts file
+   * Returns the user profile of the currently loggedin user. 
    * @returns user profile
    */
   public getUserProfile = async (): Promise<UserProfile> => {
