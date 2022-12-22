@@ -1,4 +1,3 @@
-import styles from './Footer.module.css';
 export interface IFooter {}
 
 const Footer: React.FC<IFooter> = () => {
