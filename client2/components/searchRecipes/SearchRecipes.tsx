@@ -5,7 +5,7 @@ import React, { useState } from 'react';
 import close_icon from '../../public/assets/icons/icons8-close-window-50.png';
 import search_icon from '../../public/assets/icons/icons8-search-30.png';
 import RecipeItem, { IRecipeItem } from '../recipeItem/RecipeItem';
-import styles from './SearchIngredient.module.css';
+import styles from './SearchRecipes.module.css';
 export interface ISearchIngredient {}
 
 const SearchIngredient: React.FC<any> = () => {

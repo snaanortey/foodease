@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import SearchIngredient from '../components/searchIngredient/SearchIngredient';
+import SearchRecipes from '../components/searchRecipes/SearchRecipes';
 
 export default function Home() {
   return (
@@ -11,7 +11,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.jpg" />
       </Head>
 
-      <SearchIngredient />
+      <SearchRecipes />
     </>
   );
 }

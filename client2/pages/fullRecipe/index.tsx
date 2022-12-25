@@ -4,7 +4,6 @@ import Image from 'next/image';
 import favorite from '../../public/assets/icons/icons8-bookmark-50.png';
 import close_icon_no_border from '../../public/assets/icons/icons8-close-50.png';
 import Link from 'next/link';
-import classNames from 'classnames';
 import styles from './FullRecipe.module.css';
 
 export interface IFullRecipe {

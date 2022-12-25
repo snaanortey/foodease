@@ -1,5 +1,5 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
-import SearchIngredient from './SearchIngredient';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
+import SearchIngredient from './SearchRecipes';
 
 export default {
   title: 'templates/SearchIngredient',
