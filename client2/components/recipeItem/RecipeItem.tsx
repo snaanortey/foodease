@@ -1,9 +1,4 @@
-import {
-  Card,
-  CardBody,
-  CardHeader,
-  Typography,
-} from '@material-tailwind/react';
+import styles from './RecipeItem.module.css';
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -13,19 +8,22 @@ export interface IRecipeItem {
   imageUrl: string;
 }
 
-const RecipeItem: React.FC<IRecipeItem> = ({ title, imageUrl }) => {
+const RecipeItem: React.FC<IRecipeItem> = ({ title, imageUrl, id }) => {
   return (
-    <Link className="m-2 w-30 h-30" href="">
-      <Card className="">
-        <CardHeader floated={false} className="">
-          <Image src={imageUrl} alt="recipe picture" width={80} height={80} />
-        </CardHeader>
-        <CardBody className="text-center h-4">
-          <Typography variant="h8" color="blue-gray" className="mb-2 text-xs">
-            {title}
-          </Typography>
-        </CardBody>
-      </Card>
+    <Link
+      href={`/fullRecipe?recipeId=${id}`}
+      className={`${styles.link} border rounded-xl mb-6 justify-self-auto drop-shadow-[0_10px_10px_rgba(0,0,0,0.25)]`}
+    >
+      <Image
+        className="w-11/12 h-3/5 border rounded-xl place-content-center m-auto mt-1 object-"
+        src={imageUrl}
+        alt="recipe picture"
+        width={80}
+        height={80}
+      />
+      <div className="h-2/5 pt-2 px-2">
+        <h3 className="w-full h-full text-xs">{title}</h3>
+      </div>
     </Link>
   );
 };

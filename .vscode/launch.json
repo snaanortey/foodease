@@ -13,13 +13,13 @@
       "runtimeArgs": ["start"],
       "skipFiles": ["<node_internals>/**"]
     },
-    // {
-    //   "name": "Next.js: debug server-side",
-    //   "type": "node-terminal",
-    //   "cwd": "${workspaceFolder}/client2",
-    //   "request": "launch",
-    //   "command": "npm run dev"
-    // },
+    {
+      "name": "Next.js: debug server-side",
+      "type": "node-terminal",
+      "cwd": "${workspaceFolder}/client2",
+      "request": "launch",
+      "command": "npm run dev"
+    },
     {
       "name": "Run frontend",
       "type": "chrome",
@@ -27,17 +27,17 @@
       "request": "launch",
       "url": "http://localhost:3000"
     },
-    // {
-    //   "name": "Next.js: debug full stack",
-    //   "type": "node",
-    //   "request": "launch",
-    //   "command": "npm run dev",
-    //   "console": "integratedTerminal",
-    //   "serverReadyAction": {
-    //     "pattern": "started server on .+, url: (https?://.+)",
-    //     "uriFormat": "%s",
-    //     "action": "debugWithChrome"
-    //   }
-    // }
+    {
+      "name": "Next.js: debug full stack",
+      "type": "node",
+      "request": "launch",
+      "command": "npm run dev",
+      "console": "integratedTerminal",
+      "serverReadyAction": {
+        "pattern": "started server on .+, url: (https?://.+)",
+        "uriFormat": "%s",
+        "action": "debugWithChrome"
+      }
+    }
   ]
 }

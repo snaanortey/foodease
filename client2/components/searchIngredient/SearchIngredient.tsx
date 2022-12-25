@@ -45,11 +45,13 @@ const SearchIngredient: React.FC<any> = () => {
 
   return (
     <>
-      <div className={`${styles.container} first:max-w-xs`}>
-        <h2 className="text-left">Not sure what to cook?</h2>
-        <h1 className="text-left">Type your ingredients and find a recipe!</h1>
-        <div className={`${styles.search} flex flex-col max-w-xs`}>
-          <div className="relative w-full border-y-8">
+      <div className={`${styles.container} w-full lg:w-9/12 lg:mx-auto p-8`}>
+        <h2 className="pb-2">Not sure what to cook?</h2>
+        <h2 className="pb-4">Type your ingredients and find a recipe!</h2>
+        <div
+          className={`${styles.search} flex flex-col items-center w-full lg:w-9/12`}
+        >
+          <div className="relative w-full">
             <Image
               className="absolute top-3 left-2"
               src={search_icon}
@@ -60,32 +62,45 @@ const SearchIngredient: React.FC<any> = () => {
             <input
               placeholder="Type your ingredients"
               onKeyDown={pressEnterKey}
-              className={`w-full p-2 pl-8 border-teal-500 border-spacing-4 border-2 rounded-xl dark:md:hover:placeholder-fuchsia-600`}
+              className={`bg-gray-200 w-full p-2 pl-8 border-teal-500 border-spacing-4 border-2 rounded-xl dark:md:hover:placeholder-fuchsia-600
+              hover:bg-slate-400 hover:cursor-pointer`}
             ></input>
           </div>
-          <div className="flex gap-4 flex-wrap">
+          <div className="flex flex-wrap my-2">
             {ingredientList.map((ingredient, index) => (
-              <Button className="" key={index} size="sm">
-                {ingredient}
-                <Image
-                  src={close_icon}
-                  alt="close icon"
-                  className="pl-2"
-                  onClick={() => deleteIngredient(index)}
-                ></Image>
-              </Button>
+              <button
+                key={index}
+                className="flex flex-wrap mr-2 my-1 uppercase px-2 py-1 rounded-full border border-yellow-800 text-yellow-800 max-w-max shadow-sm hover:shadow-lg"
+              >
+                <h3 className="" key={index}>
+                  {ingredient}
+                </h3>{' '}
+                <span>
+                  <Image
+                    src={close_icon}
+                    alt="close icon"
+                    width={30}
+                    height={30}
+                    className="pl-2"
+                    onClick={() => deleteIngredient(index)}
+                  ></Image>
+                </span>
+              </button>
             ))}
           </div>
-          <Button onClick={getRecipesHandler} variant="text">
+          <Button
+            onClick={getRecipesHandler}
+            className="button button-pink mr-3 mb-4"
+            data-ripple-light="true"
+          >
             Get Recipes
           </Button>
         </div>
-
-        {recipeList.map((recipe, index) => (
-          <div key={index} className="flex flex-wrap">
-            <RecipeItem {...recipe} />
-          </div>
-        ))}
+        <div className="flex flex-wrap justify-evenly">
+          {recipeList.map((recipe, index) => {
+            return <RecipeItem key={index} {...recipe} />;
+          })}
+        </div>
       </div>
     </>
   );
