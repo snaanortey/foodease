@@ -68,8 +68,10 @@ const FullRecipe: NextPageWithLayout<IFullRecipe> = (prop) => {
         </div>
         <div className="p-8">
           {prop.instructions.split('. ').map((line, i) => {
+            // Where 'i+1' is an even number, the text color should be 'cyan-600'. 
+            // For odd numbers, 'i+1' should be 'amber-800'
             let color = '';
-            (i + 2) % 2 === 0
+            (i + 1) % 2 === 0
               ? (color = 'text-cyan-600')
               : (color = 'text-amber-800');
 
