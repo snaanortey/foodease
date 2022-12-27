@@ -1,0 +1,6 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+# cd to client2 folder is to show the directory as husky assumes the git root folder is the directory 
+# see https://typicode.github.io/husky/#/?id=custom-directory
+cd client2
+yarn lint

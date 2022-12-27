@@ -1,4 +1,3 @@
-import axios from "axios";
 import { Recipe } from "../../src/types";
 import { elasticClient } from "./elasticClient";
 
@@ -29,8 +28,7 @@ function buildPartialQueriesFromKeywords(
  * @returns the image propery of the API response
  */
 async function getRandomImage(): Promise<string> {
-  const { data } = await axios.get("https://foodish-api.herokuapp.com/api/");
-  return data.image;
+  return "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=300&q=80";
 }
 
 export const searchIngredientsByKeyWords = async (keywords: string[]): Promise<Recipe[]> => {
