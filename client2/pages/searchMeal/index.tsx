@@ -16,13 +16,17 @@ const SearchMeal: NextPageWithLayout<ISearchMeal> = () => {
   ) => {
     const mealName = e.target.value;
 
-    const { data } = await axios.get(
-      `http://localhost:8000/meals/search?query=${mealName}`
-    );
+    if (mealName.length >= 3) {
+      const { data } = await axios.get(
+        `http://localhost:8000/meals/search?query=${mealName}`
+      );
 
-    console.log(data);
+      setSuggestedMeal(data);
+    }
 
-    setSuggestedMeal(data);
+    if (mealName.length <= 2) {
+      setSuggestedMeal([]);
+    }
   };
 
   return (
