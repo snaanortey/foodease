@@ -1,32 +1,30 @@
-import { GetServerSideProps } from 'next';
 import { NextPageWithLayout } from '../page';
 import Image from 'next/image';
 import favorite from '../../public/assets/icons/icons8-bookmark-50.png';
 import close_icon_no_border from '../../public/assets/icons/icons8-close-50.png';
 import Link from 'next/link';
 import styles from './FullRecipe.module.css';
+import { backendService } from '../../services/backend';
+import useSWR from 'swr';
+import { useRouter } from 'next/router';
+import Error from '../../components/error/Error';
+import { RecipePerMealSelected } from '../../types';
 
-export interface IFullRecipe {
-  title: string;
-  ingredients: string[];
+const FullRecipe: NextPageWithLayout<RecipePerMealSelected> = () => {
+  const router = useRouter();
+  const { recipeId } = router.query;
+  const { data, error } = useSWR(recipeId, backendService.getRecipebyId);
 
-  instructions: string;
-}
+  if (!error && !data) {
+    return <p>Recipe is loading...</p>;
+  }
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  const recipeId = context.query['recipeId'];
-  const response = await fetch(`http://localhost:8000/ingredients/${recipeId}`);
+  if (error || !data?.ingredients) {
+    return <Error />;
+  }
 
-  const recipe = await response.json();
+  const recipe = data;
 
-  return {
-    props: {
-      ...recipe,
-    },
-  };
-};
-
-const FullRecipe: NextPageWithLayout<IFullRecipe> = (prop) => {
   return (
     <div className={`m-8 bg-gray-200 border-transparent rounded-t-2xl`}>
       <Image
@@ -58,16 +56,16 @@ const FullRecipe: NextPageWithLayout<IFullRecipe> = (prop) => {
         <div
           className={`w-11/12 py- px-4 border-transparent border-4 rounded-lg bg-white ${styles.ingredients}`}
         >
-          <h1 className="pb-4 decoration-8">{prop.title}</h1>
+          <h1 className="pb-4 decoration-8">{recipe.title}</h1>
           <h2>Ingredients</h2>
-          {prop.ingredients.map((ingredient, i) => (
+          {recipe.ingredients.map((ingredient, i) => (
             <h3 key={i} className="pt-2">
               {ingredient}
             </h3>
           ))}
         </div>
         <div className="p-8">
-          {prop.instructions.split('. ').map((line, i) => {
+          {recipe.instructions.split('. ').map((line, i) => {
             // Where 'i+1' is an even number, the text color should be 'cyan-600'.
             // For odd numbers, 'i+1' should be 'amber-800'
             let color = '';

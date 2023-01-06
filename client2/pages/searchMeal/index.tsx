@@ -1,14 +1,14 @@
 import { NextPageWithLayout } from '../page';
 import { useState } from 'react';
-import axios from 'axios';
 import Link from 'next/link';
+import { backendService } from '../../services/backend';
 
 export interface ISearchMeal {
   id: string;
   title: string;
 }
 
-const SearchMeal: NextPageWithLayout<ISearchMeal> = () => {
+const SearchMeal: NextPageWithLayout = () => {
   const [suggestedMeal, setSuggestedMeal] = useState<ISearchMeal[]>([]);
 
   const getSuggestedMeal: React.ChangeEventHandler<HTMLInputElement> = async (
@@ -17,14 +17,9 @@ const SearchMeal: NextPageWithLayout<ISearchMeal> = () => {
     const mealName = e.target.value;
 
     if (mealName.length >= 3) {
-      const { data } = await axios.get(
-        `http://localhost:8000/meals/search?query=${mealName}`
-      );
-
+      const data = await backendService.searchMealName(mealName);
       setSuggestedMeal(data);
-    }
-
-    if (mealName.length <= 2) {
+    } else {
       setSuggestedMeal([]);
     }
   };

@@ -1,36 +1,29 @@
-import { useRouter } from 'next/router';
-import { useState } from 'react';
-import axios from 'axios';
-import { NextPageWithLayout } from '../page';
-import pepper from '../../public/assets/images/pepper.avif';
-import add from '../../public/assets/icons/icons8-add-64.png';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
+import add from '../../public/assets/icons/icons8-add-64.png';
+import pepper from '../../public/assets/images/pepper.avif';
+import { backendService } from '../../services/backend';
+import { NextPageWithLayout } from '../page';
 import styles from './ShoppingList.module.css';
+import useSWR from 'swr';
+import Error from '../../components/error/Error';
+import { RecipePerMealSelected } from '../../types';
 
-export interface IShoppingList {
-  ingredients: string[];
-  picture_link: string;
-  instructions: string;
-  title: string;
-}
-
-const ShoppingList: NextPageWithLayout = () => {
+const ShoppingList: NextPageWithLayout<RecipePerMealSelected> = () => {
   const router = useRouter();
   const { recipeId } = router.query;
-  const [shoppingList, setShoppingList] = useState<string[]>([]);
 
-  axios
-    .get(`http://localhost:8000/ingredients/${recipeId}`)
-    .then((response) => {
-      setShoppingList(response.data.ingredients);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+  const { data, error } = useSWR(recipeId, backendService.getRecipebyId);
 
-  if (!shoppingList) {
-    <p>Shopping list is loading...</p>;
+  if (!error && !data) {
+    return <p>Shopping list is loading...</p>;
   }
+
+  if (error || !data?.ingredients) {
+    return <Error />;
+  }
+
+  const shoppingList = data.ingredients;
 
   return (
     <div className={`px-8 py-6 ${styles.container}`}>
