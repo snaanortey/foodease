@@ -15,7 +15,6 @@ const SearchIngredient: React.FC<any> = () => {
     if (e.key === 'Enter') {
       const target = e.target as HTMLInputElement;
       const typedInput = target.value;
-      console.log(typedInput);
       const newValue = Array.from(
         new Set([...ingredientList, typedInput]).values()
       );
