@@ -11,6 +11,7 @@ import userLogin from "../src/routes/login";
 import searchAndSuggestMeals from "../src/routes/searchAndSuggestMeals";
 import userRegistration from "../src/routes/userRegistration";
 import secret from "./routes/profile";
+import recommendedRecipes from "./routes/getRecommendedRecipes";
 
 const app = express();
 
@@ -25,6 +26,8 @@ app.use("/recipes/search", ingredientsToRecipes);
 app.use("/meals/search", searchAndSuggestMeals);
 app.use("/register", userRegistration);
 app.use("/login", userLogin);
+app.use("/recommendedRecipes", recommendedRecipes);
+
 
 // Plug in the JWT strategy as a middleware so only verified users can access this route.
 app.use("/profile", passport.authenticate("jwt", { session: false }), secret);
